@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const Heading = require('./models/Heading');
 
 const { DB_USER, DB_PASSWORD, DB_HOST,DB_NAME,DB_PORT } = process.env;
 
@@ -40,16 +41,20 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User,Role,Shift,Product,Category,Brand,PType } = sequelize.models;
+const { User,Role,Shift,Product,Category,Brand,PType,Heading } = sequelize.models;
 
 
 // Aca vendrian las relaciones
 
 
 User.hasOne(Role)
-Role.hasMany(User,{through: 'role_users'})
 User.hasMany(Shift,{through: 'users_shifts'})
+
+Role.hasMany(User,{through: 'role_users'})
+
 Shift.hasMany(User,{through: 'users_shifts'})
+
+Heading.hasMany(Product,{as: 'products'})
 
 Product.hasOne(Brand)
 Product.hasOne(PType)
