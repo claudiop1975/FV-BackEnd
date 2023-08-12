@@ -1,25 +1,26 @@
-const { DataTypes } = require('sequelize');
+import sequelize from "../db.js";
+import {DataTypes} from 'sequelize'
 
-module.exports = (sequelize) => {
-    sequelize.define('shift', {
-        name: {
+
+export const Shift = sequelize.define('shift', {
+    shift_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        shift_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },
-        start:{
+        shift_start:{
             type:DataTypes.TIME,
             allowNull: false,
         },
-        end:{
+        shift_end:{
             type:DataTypes.TIME,
             allowNull: false,
         }
        
     }, { timestamps: false });
-};
+

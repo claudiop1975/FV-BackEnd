@@ -1,17 +1,19 @@
-const { DataTypes } = require('sequelize');
+import sequelize from "../db.js";
+import {DataTypes} from 'sequelize'
 
-module.exports = (sequelize) => {
-    sequelize.define('product_type', {
-        name: {
+
+export const ProductType = sequelize.define('product_type', {
+    product_type_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        product_type_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         }
        
     }, { timestamps: false });
-};
+
+  
