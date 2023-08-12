@@ -1,18 +1,17 @@
-const { DataTypes } = require('sequelize');
+import sequelize from "../db.js";
+import {DataTypes} from 'sequelize'
 
-
-module.exports = (sequelize) => {
-    sequelize.define('combo', {
-        name: {
+export const Combo = sequelize.define('combo', {
+    combo_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        combo_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         }
        
     }, { timestamps: false });
-};
+

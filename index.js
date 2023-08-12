@@ -1,9 +1,19 @@
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const PORT= process.env.PORT || 3001
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(PORT, () => {
-    console.log('Server listening at port'+ PORT); // eslint-disable-line no-console
-  });
-});
+import app from "./src/app.js";
+import sequelize from "./src/db.js";
+
+import  "./src/models/associations.js"
+
+async function main(){
+  try {
+    await sequelize.authenticate()
+    await sequelize.sync({force: false})
+    app.listen(3000,);
+  } catch (error) {
+    console.error(error);
+  }
+  finally{
+  console.log("Levantado en puerto 3oo0")
+  }
+}
+
+main()

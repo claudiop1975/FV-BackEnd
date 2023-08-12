@@ -1,18 +1,19 @@
-const { DataTypes } = require('sequelize');
+import sequelize from "../db.js";
+import {DataTypes} from 'sequelize'
 
 
-module.exports = (sequelize) => {
-    sequelize.define('role', {
-        name: {
+export const Role = sequelize.define('role', {
+    role_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        role_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         }
        
     }, { timestamps: false });
-};
+
+ 

@@ -1,29 +1,30 @@
-const { DataTypes } = require('sequelize');
-const {encrypt}= require('../utils/bcrypt.js')
+import sequelize from "../db.js";
+import {DataTypes} from 'sequelize'
+//import { encrypt } from '../utils/bcrypt.js';
 
 
-module.exports = (sequelize) => {
-    sequelize.define('user', {
-        name: {
+export const User = sequelize.define('user', {
+    user_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        user_id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },
-        password: {
+        user_password: {
             type: DataTypes.STRING,
             allowNull: false,
             set(pass){
                 this.setDataValue('password', encrypt(pass))
             }
         },
-        phone:{
+        user_phone:{
             type: DataTypes.STRING,
             allowNull: false,       
         },
     }, { timestamps: false });
-};
+
+ 
