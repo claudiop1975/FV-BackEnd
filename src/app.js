@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 
-//import routes from './routes/index.js';
+import routes from './routes/index.js';
 
 
 
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 
-//app.use('/', routes);
+app.use('/', routes);
 app.all('*', (req, res) => {
   res.status(404).send({ message: 'Route not found' })
   

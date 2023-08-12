@@ -6,7 +6,7 @@ import  "./src/models/associations.js"
 async function main(){
   try {
     await sequelize.authenticate()
-    await sequelize.sync({force: true})
+    await sequelize.sync({force: false})
     app.listen(3000,);
   } catch (error) {
     console.error(error);
