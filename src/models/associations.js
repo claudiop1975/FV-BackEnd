@@ -71,4 +71,3 @@ Cashbox.belongsTo(User,{
 
 
 
-
