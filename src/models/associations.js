@@ -9,10 +9,10 @@ import { Product } from "./Product.js";
 import { ProductType } from "./PType.js";
 import { Role } from "./Role.js";
 import { Shift } from "./Shift.js";
-import { Stock } from "./Stock.js";
+import { Stock_diference } from "./StockDiference.js";
 import { User } from "./User.js";
 import { Cashbox } from "./Cashbox.js";
-import { Stock } from "./Stock.js";
+import { CashboxMoves } from "./CashboxMoves.js";
 
 User.belongsTo(Role,{
     foreignKey: "role_id",
@@ -54,10 +54,10 @@ Order.belongsTo(Client,{
     foreignKey: "client_id",
 })
 
-Stock.belongsTo(Product,{
+Stock_diference.belongsTo(Product,{
     foreignKey: "product_id",
 })
-Stock.belongsTo(Shift,{
+Stock_diference.belongsTo(Shift,{
     foreignKey: "shift_id",
 })
 
