@@ -69,5 +69,12 @@ Cashbox.belongsTo(User,{
     foreignKey: "user_id",
 })
 
+CashboxMoves.belongsTo(Cashbox, {
+    foreignKey: 'cashboxId', 
+    targetKey: 'cashbox_id'
+});
+
+   
+
 
 

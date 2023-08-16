@@ -1,14 +1,24 @@
 import sequelize from '../db.js';
 import { DataTypes } from 'sequelize';
 
-export  const  Stock = sequelize.define('stock', {
+export  const  Stock_diference = sequelize.define('stock', {
     stock_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-    stock_quantity: {
+    stock_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+    /* product_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }, */ //!relaciones ????
+    stock_diference: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+
     }, { timestamps: false });
