@@ -1,7 +1,7 @@
 import sequelize from '../db.js';
 import { DataTypes } from 'sequelize';
 
-export  const  Stock_diference = sequelize.define('stock', {
+export  const  Stock_diference = sequelize.define('stock_diference', {
     stock_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
