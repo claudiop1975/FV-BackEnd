@@ -1,11 +1,16 @@
 import sequelize from "../db.js";
 import {DataTypes} from 'sequelize'
 
-export const Cashbox = sequelize.define('cashbox', {
-cashbox_id: {
+
+
+
+
+export const Sells = sequelize.define('sells', {
+    sell_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    }
+    },
+    
+}, { timestamps: true });
 
-    }, { timestamps: false });

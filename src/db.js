@@ -6,9 +6,12 @@ dotenv.config()
 
 const { DB_URI} = process.env;
 
-const sequelize = new Sequelize(DB_URI);
+const sequelize = new Sequelize('fv', 'postgres', '1', {
+    host: 'localhost',
+    dialect: "postgres"
+  });
 
-// Aca vendrian las relaciones
+
 
 
 

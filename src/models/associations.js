@@ -9,10 +9,11 @@ import { Product } from "./Product.js";
 import { ProductType } from "./PType.js";
 import { Role } from "./Role.js";
 import { Shift } from "./Shift.js";
-import { Stock } from "./Stock.js";
+import { StockDiference } from "./StockDiference.js";
 import { User } from "./User.js";
 import { Cashbox } from "./Cashbox.js";
-import { Stock } from "./Stock.js";
+import { CashboxMoves } from "./CashboxMoves.js";
+import { Sells } from "./Sells.js";
 
 User.belongsTo(Role,{
     foreignKey: "role_id",
@@ -24,22 +25,25 @@ User.belongsTo(Shift,{
 
 
 Product.belongsTo(Brand,{
-    foreignKey: "brand_id"
+    foreignKey: "brand_id",
 })
 Product.belongsTo(Category,{
-    foreignKey: "category_id"
+    foreignKey: "category_id",
 })
 Product.belongsTo(ProductType,{
-    foreignKey: "product_type_id"
+    foreignKey: "product_type_id",
 })
 Product.belongsTo(Heading,{
-    foreignKey: "heading_id"
+    foreignKey: "heading_id",
 })
+
 Product.belongsToMany(Order,{
-    through: "order_id"
+    through: "orders_products",
+    timestamps: false,
 })
 Product.belongsToMany(Combo,{
-    through: "combo_id"
+    through: "combos_products",
+    timestamps: false,
 })
 
 
@@ -47,34 +51,38 @@ Product.belongsToMany(Combo,{
 Order.belongsTo(OrderStatus,{
     foreignKey: "order_status_id",
 })
-Order.belongsToMany(Product,{
-    through: "product_id"
-})
+
 Order.belongsTo(Client,{
     foreignKey: "client_id",
 })
 
-Stock.belongsTo(Product,{
-    foreignKey: "product_id",
-})
-Stock.belongsTo(Shift,{
-    foreignKey: "shift_id",
-})
 
 
 Cashbox.belongsTo(Shift,{
     foreignKey: "shift_id",
 })
-Cashbox.belongsTo(User,{
+Cashbox.hasMany(CashboxMoves,{
+    foreignKey: "cashbox_moves_id",
+})
+
+CashboxMoves.belongsTo(Cashbox,{
+    foreignKey: "cashbox_id",
+})
+
+StockDiference.belongsTo(User,{
     foreignKey: "user_id",
 })
 
-CashboxMoves.belongsTo(Cashbox, {
-    foreignKey: 'cashboxId', 
-    targetKey: 'cashbox_id'
-});
-
-   
 
 
-
+Sells.belongsTo(CashboxMoves,{
+    foreignKey: "cashbox_moves_id",
+})
+Sells.belongsToMany(Product, {
+    through: "sell_product",
+    timestamps: false,
+})
+Sells.belongsToMany(Combo, {
+    through: "sell_combo",
+    timestamps: false,
+})

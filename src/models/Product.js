@@ -19,6 +19,18 @@ export const Product = sequelize.define('product', {
         product_price:{
             type:DataTypes.FLOAT,
             allowNull: false,
+            min:0
+        },
+        product_stock:{
+            type:DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue:0,
+            min:0
+        },
+        product_active:{
+            type:DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue:true
         }
         
     }, { timestamps: false });
