@@ -10,6 +10,16 @@ export async function getAll(req, res) {
     }
 }
 
+export async function getByID(req, res) {
+    const { category_id } = req.body
+    try {
+        const category = await Category.findByPk(category_id)
+        res.json(category)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}
+
 export async function newCategory(req, res) {
     try {
         const { category_name } = req.body

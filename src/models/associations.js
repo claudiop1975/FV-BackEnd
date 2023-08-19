@@ -18,9 +18,11 @@ import { Sells } from "./Sells.js";
 User.belongsTo(Role,{
     foreignKey: "role_id",
 })
-User.belongsTo(Shift,{
-    foreignKey: "shift_id",
+User.belongsToMany(Shift,{
+    through: "user_shift",
+    timestamps: false,
 })
+
 
 
 
@@ -84,5 +86,12 @@ Sells.belongsToMany(Product, {
 })
 Sells.belongsToMany(Combo, {
     through: "sell_combo",
+    timestamps: false,
+})
+
+
+
+Shift.belongsToMany(User,{
+    through: "user_shift",
     timestamps: false,
 })

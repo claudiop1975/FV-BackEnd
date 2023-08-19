@@ -9,6 +9,15 @@ export async function getAll(req, res) {
         res.status(400).send(error.message)
     }
 }
+export async function getByID(req, res) {
+    const { brand_id } = req.body
+    try {
+        const brand = await Brand.findByPk(brand_id)
+        res.json(brand)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}
 
 export async function newBrand(req, res) {
     try {

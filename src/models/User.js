@@ -17,9 +17,9 @@ export const User = sequelize.define('user', {
         user_password: {
             type: DataTypes.STRING,
             allowNull: false,
-            set(pass){
+            /* set(pass){
                 this.setDataValue('password', encrypt(pass))
-            }
+            } */
         },
         user_phone:{
             type: DataTypes.STRING,
