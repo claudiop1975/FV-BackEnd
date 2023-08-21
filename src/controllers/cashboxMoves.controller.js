@@ -24,10 +24,10 @@ export async function getMovementsByCashboxID(req, res) {
 
 
 
-export async function newCashboxMoveIncome(req, res) {
+export async function newCashboxMove(req, res) {
     try {
-        const { cashbox_id,cashbox_moves_income,cashbox_moves_description } = req.body
-        let newCashboxMove = await CashboxMoves.create({cashbox_id,cashbox_moves_income,cashbox_moves_description})
+        const { cashbox_id,cashbox_moves_income,cashbox_moves_description,cashbox_moves_outcome } = req.body
+        let newCashboxMove = await CashboxMoves.create({cashbox_id,cashbox_moves_income,cashbox_moves_outcome,cashbox_moves_description})
 
         res.send(newCashboxMove)
     } catch (error) {
@@ -35,13 +35,3 @@ export async function newCashboxMoveIncome(req, res) {
     }
 }
 
-export async function newCashboxMoveOutcome(req, res) {
-    try {
-        const { cashbox_id,cashbox_moves_outcome,cashbox_moves_description } = req.body
-        let newCashboxMove = await CashboxMoves.create({cashbox_id,cashbox_moves_outcome,cashbox_moves_description})
-
-        res.send(newCashboxMove)
-    } catch (error) {
-        res.status(400).send(error.message)
-    }
-}
