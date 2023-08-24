@@ -13,7 +13,14 @@ export async function getAll(req, res) {
 export async function newProd(req, res) {
     try {
         const { product_name, product_presentation, product_price, brand_id, category_id, product_type_id } = req.body
-        let newProduct = await Product.create({ product_name, product_presentation, product_price:parseFloat(product_price),brand_id:parseInt(brand_id), category_id:parseInt(category_id), product_type_id:parseInt(product_type_id) })
+        let newProduct = await Product.create({ 
+            product_name, 
+            product_presentation, 
+            product_price:parseFloat(product_price),
+            brand_id:parseInt(brand_id),
+            category_id:parseInt(category_id),
+            product_type_id:parseInt(product_type_id) 
+        })
     /*     newProduct.addType(product_type_id)
         newProduct.addBrand(brand_id)
         newProduct.addCategory(category_id) */
